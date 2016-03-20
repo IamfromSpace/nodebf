@@ -40,17 +40,17 @@ e
    | e ','
       {$$ = $1 + 'd[p]=c[cp]?String.charCodeAt(c[cp]):0;cp++;';}
    | '.'
-      {$$ = 'module.exports = function(s) {var d=new Uint8Array(30000);var p=0;c=s.split(\'\');cp=0;o=\'\';o+=String.fromCharCode(d[p]);';}
+      {$$ = 'module.exports = function(s) {var d=new Uint8Array(30000);var p=0;c=s?s.split(\'\'):[];cp=0;o=\'\';o+=String.fromCharCode(d[p]);';}
    | ','
-      {$$ = 'module.exports = function(s) {var d=new Uint8Array(30000);var p=0;c=s.split(\'\');cp=0;o=\'\';d[p]=c[cp]?String.charCodeAt(c[cp]):0;cp++;';}
+      {$$ = 'module.exports = function(s) {var d=new Uint8Array(30000);var p=0;c=s?s.split(\'\'):[];cp=0;o=\'\';d[p]=c[cp]?String.charCodeAt(c[cp]):0;cp++;';}
    | '+'
-      {$$ = 'module.exports = function(s) {var d=new Uint8Array(30000);var p=0;c=s.split(\'\');cp=0;o=\'\';d[p]++;';}
+      {$$ = 'module.exports = function(s) {var d=new Uint8Array(30000);var p=0;c=s?s.split(\'\'):[];cp=0;o=\'\';d[p]++;';}
    | '-'
-      {$$ = 'module.exports = function(s) {var d=new Uint8Array(30000);var p=0;c=s.split(\'\');cp=0;o=\'\';d[p]--;';}
+      {$$ = 'module.exports = function(s) {var d=new Uint8Array(30000);var p=0;c=s?s.split(\'\'):[];cp=0;o=\'\';d[p]--;';}
    | '>'
-      {$$ = 'module.exports = function(s) {var d=new Uint8Array(30000);var p=0;c=s.split(\'\');cp=0;o=\'\';p++;';}
+      {$$ = 'module.exports = function(s) {var d=new Uint8Array(30000);var p=0;c=s?s.split(\'\'):[];cp=0;o=\'\';p++;';}
    | '<'
-      {$$ = 'module.exports = function(s) {var d=new Uint8Array(30000);var p=0;c=s.split(\'\');cp=0;o=\'\';p--;';}
+      {$$ = 'module.exports = function(s) {var d=new Uint8Array(30000);var p=0;c=s?s.split(\'\'):[];cp=0;o=\'\';p--;';}
    | '['
-      {$$ = 'module.exports = function(s) {var d=new Uint8Array(30000);var p=0;c=s.split(\'\');cp=0;o=\'\';while(d[p]) {';}
+      {$$ = 'module.exports = function(s) {var d=new Uint8Array(30000);var p=0;c=s?s.split(\'\'):[];cp=0;o=\'\';while(d[p]) {';}
    ;
