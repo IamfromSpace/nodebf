@@ -11,9 +11,7 @@ module.exports = function(config) {
     plugins: [
       'karma-mocha',
       'karma-firefox-launcher',
-      'karma-common-js',
       'karma-webpack',
-      require('./karma-plugin.js')
     ],
 
 
