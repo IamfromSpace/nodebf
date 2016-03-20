@@ -23,23 +23,18 @@ expressions
    ;
 
 e
-   : e '+'
-      {$$ = $1 + 'd[p]++;';}
-   | e '-'
-      {$$ = $1 + 'd[p]--;';}
-   | e '>'
-      {$$ = $1 + 'p++;';}
-   | e '<'
-      {$$ = $1 + 'p--;';}
-   | e '['
-      {$$ = $1 + 'while(d[p]) {';} 
-   | e ']'
-      {$$ = $1 + '}';}
-   | e '.'
-      {$$ = $1 + 'o+=String.fromCharCode(d[p]);';}
-   | e ','
-      {$$ = $1 + 'd[p]=c[cp]?String.charCodeAt(c[cp]):0;cp++;';}
-   | '.'
+   : e symbol
+      {$$ = $1 + $2;}
+   | e '[' e ']'
+      {$$ = $1 + 'while(d[p]) {' + $3 + '}';}
+   | '[' e ']' //Loops that begin programs will never execute, so we ignore them
+      {$$ = '';}
+   | symbol
+      {$$ = $1;}
+   ;
+
+symbol
+   : '.'
       {$$ = 'o+=String.fromCharCode(d[p]);';}
    | ','
       {$$ = 'd[p]=c[cp]?String.charCodeAt(c[cp]):0;cp++;';}
@@ -51,6 +46,4 @@ e
       {$$ = 'p++;';}
    | '<'
       {$$ = 'p--;';}
-   | '['
-      {$$ = 'while(d[p]) {';}
    ;
