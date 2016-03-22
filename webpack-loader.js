@@ -1,6 +1,6 @@
-var bfjs = require('./bfjs');
+var nodebf = require('./nodebf');
 
 module.exports = function(source) {
   this.cacheable();
-  return bfjs.parser.parse(source);
+  return nodebf.parser.parse(source);
 }

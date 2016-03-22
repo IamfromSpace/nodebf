@@ -1,11 +1,11 @@
-var bfjs = require('./bfjs.js');
+var nodebf = require('./nodebf.js');
 
-var createBfjsPreprocessor = function (args, config, logger, helper) {
-  var log = logger.create('preprocessor.bfjs')
+var createNodebfPreprocessor = function (args, config, logger, helper) {
+  var log = logger.create('preprocessor.nodebf')
   return function (content, file, done) {
     result = null;
     try {
-      result = bfjs.parser.parse(content);
+      result = nodebf.parser.parse(content);
     } catch (e) {
       log.error('compile error! ' + e.toString());
       return done(e);
@@ -16,5 +16,5 @@ var createBfjsPreprocessor = function (args, config, logger, helper) {
 }
 
 module.exports = {
-  'preprocessor:bfjs': ['factory', createBfjsPreprocessor]
+  'preprocessor:nodebf': ['factory', createNodebfPreprocessor]
 }
