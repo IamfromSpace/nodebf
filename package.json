@@ -1,0 +1,23 @@
+{
+  "name": "node.bf",
+  "version": "0.1.0",
+  "description": "A BrainFuck transpiler for Javascript.",
+  "author": "Nathan Fairhurst <nathan.p3pictures@gmail.com>",
+  "main": "nodebf.js",
+  "scripts": {
+    "build": "jison nodebf.jison",
+    "prepublish": "npm run build",
+    "test": "npm run build && karma start",
+    "clean": "rm nodebf.js"
+  },
+  "devDependencies": {
+    "jison": "^0.4.17",
+    "karma": "^0.13.22",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-mocha": "^0.2.2",
+    "karma-webpack": "^1.7.0",
+    "mocha": "^2.4.5",
+    "path": "^0.12.7",
+    "webpack": "^1.12.14"
+  }
+}
